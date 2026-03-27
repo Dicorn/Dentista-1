@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova Dental — Centro Odontológico de Especialidades en Lima | Citas Online</title>
+<meta name="description" content="Centro odontológico en Lima con sistema de citas online. Implantes, ortodoncia, estética dental. Agenda tu cita las 24/7 desde nuestra web.">
+<meta property="og:title" content="Nova Dental — Agenda tu cita online las 24/7">
+<meta property="og:description" content="Centro odontológico con sistema de agendamiento online, blog de salud dental y equipo especializado.">
+<link rel="canonical" href="https://www.novadental.pe">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF9F7;
+    --bg-white: #FFFFFF;
+    --bg-dark: #0F1B1A;
+    --bg-teal: #EBF5F3;
+    --bg-warm: #FDF6F0;
+    --text: #0F1B1A;
+    --text-mid: #3D5654;
+    --text-light: #7A908E;
+    --accent: #0D7C6B;
+    --accent-hover: #0A6858;
+    --accent-soft: rgba(13,124,107,0.06);
+    --accent-glow: rgba(13,124,107,0.12);
+    --gold: #D4A574;
+    --gold-soft: rgba(212,165,116,0.1);
+    --coral: #E8735A;
+    --border: rgba(0,0,0,0.05);
+    --shadow: 0 4px 24px rgba(0,0,0,0.05);
+    --shadow-lg: 0 16px 50px rgba(0,0,0,0.07);
+    --r: 16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);line-height:1.65;background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+  /* NOISE */
+  body::after{content:'';position:fixed;inset:0;opacity:0.015;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.9rem 2.5rem;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s;background:transparent}
+  nav.scrolled{background:rgba(250,249,247,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.03)}
+  .logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none}
+  .logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--accent),#15A08B);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.1rem;box-shadow:0 2px 8px var(--accent-glow)}
+  .logo-name{font-family:'Fraunces',serif;font-weight:800;font-size:1.25rem;color:var(--text);letter-spacing:-0.5px}
+  .nlinks{display:flex;gap:1.8rem;list-style:none;align-items:center}
+  .nlinks a{color:var(--text-mid);text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:0.2px;transition:color 0.3s}
+  .nlinks a:hover{color:var(--accent)}
+  .ncta{background:var(--accent)!important;color:white!important;padding:0.55rem 1.3rem;border-radius:9px;box-shadow:0 2px 10px var(--accent-glow);transition:all 0.3s!important}
+  .ncta:hover{background:var(--accent-hover)!important;transform:translateY(-1px)}
+
+  /* HERO */
+  .hero{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:4rem;max-width:1220px;margin:0 auto;padding:7rem 2.5rem 4rem}
+  .hero-content{animation:fadeUp 0.9s ease both}
+  .hero-pill{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold-soft);border:1px solid rgba(212,165,116,0.15);color:var(--gold);font-size:0.7rem;font-weight:700;padding:0.35rem 1rem;border-radius:100px;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:1.5rem}
+  .hero-pill .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 2s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+  .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;line-height:1.08;margin-bottom:1.2rem;letter-spacing:-1px}
+  .hero h1 em{color:var(--accent);font-style:normal;position:relative}
+  .hero h1 em::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:10px;background:var(--accent-soft);border-radius:4px;z-index:-1}
+  .hero-p{font-size:1.05rem;color:var(--text-mid);max-width:430px;line-height:1.75;margin-bottom:2rem}
+  .hero-btns{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:2.5rem}
+  .btn-book{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 1.8rem;background:var(--accent);color:white;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;border:none;border-radius:11px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 20px var(--accent-glow)}
+  .btn-book:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--accent-glow);background:var(--accent-hover)}
+  .btn-wa2{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 1.8rem;background:#25D366;color:white;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;border:none;border-radius:11px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 16px rgba(37,211,102,0.25)}
+  .btn-wa2:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(37,211,102,0.35)}
+  .hero-metrics{display:flex;gap:2.5rem}
+  .hm{text-align:left}
+  .hm-num{font-family:'Fraunces',serif;font-weight:800;font-size:1.8rem;color:var(--accent);display:block;line-height:1.1}
+  .hm-lbl{font-size:0.68rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+
+  .hero-vis{animation:fadeUp 0.9s ease 0.2s both;position:relative}
+  .hero-main-img{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,var(--bg-teal),var(--bg-warm));border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;position:relative}
+  .hero-main-img::before{content:'';position:absolute;top:-30%;right:-20%;width:60%;height:70%;background:radial-gradient(circle,var(--accent-glow),transparent);border-radius:50%}
+  .ph{text-align:center;color:var(--text-light);font-size:0.85rem;z-index:1;position:relative}
+  .ph .big{font-size:4rem;display:block;margin-bottom:0.5rem}
+  .h-float{position:absolute;background:var(--bg-white);border-radius:14px;padding:0.85rem 1.1rem;box-shadow:var(--shadow);border:1px solid var(--border);animation:flt 4s ease-in-out infinite;z-index:2}
+  .h-float.f1{top:12%;right:-30px}.h-float.f2{bottom:25%;left:-35px;animation-delay:1.5s}.h-float.f3{bottom:8%;right:10%;animation-delay:3s}
+  .hf-l{font-size:0.65rem;color:var(--text-light);font-weight:600;text-transform:uppercase}
+  .hf-v{font-family:'Fraunces',serif;font-weight:800;font-size:1.2rem;color:var(--accent)}
+  .hf-v2{font-family:'Fraunces',serif;font-weight:800;font-size:1rem;color:var(--gold)}
+  @keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+  /* SECTIONS */
+  section{padding:5.5rem 2.5rem}
+  .ctn{max-width:1100px;margin:0 auto}
+  .tag{display:inline-block;font-size:0.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:0.6rem}
+  .st{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(1.8rem,3.5vw,2.5rem);letter-spacing:-0.5px;margin-bottom:0.5rem}
+  .sd{font-size:1rem;color:var(--text-mid);max-width:500px;line-height:1.7;margin-bottom:3rem}
+
+  /* SERVICES */
+  .srv-sec{background:var(--bg-white)}
+  .srv-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+  .sc{padding:2rem 1.5rem;border-radius:var(--r);border:1px solid var(--border);background:var(--bg);transition:all 0.4s;position:relative;overflow:hidden}
+  .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+  .sc:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .sc:hover::before{transform:scaleX(1)}
+  .sc-i{width:50px;height:50px;border-radius:13px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem}
+  .sc h3{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;margin-bottom:0.4rem}
+  .sc p{font-size:0.85rem;color:var(--text-mid);line-height:1.6}
+  .sc .price-tag{display:inline-block;margin-top:0.75rem;font-size:0.72rem;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:0.25rem 0.7rem;border-radius:6px}
+
+  /* TEAM */
+  .team-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .tc{text-align:center;padding:2rem 1.5rem;background:var(--bg-white);border-radius:var(--r);border:1px solid var(--border);transition:all 0.35s}
+  .tc:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+  .tc-ph{width:130px;height:130px;border-radius:50%;margin:0 auto 1.2rem;display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative}
+  .tc-ph::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px dashed var(--accent-glow)}
+  .tp1{background:linear-gradient(135deg,var(--bg-teal),var(--bg-warm))}.tp2{background:linear-gradient(135deg,var(--bg-warm),#f0e8f5)}.tp3{background:linear-gradient(135deg,#e8edf5,var(--bg-teal))}
+  .tc h3{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;margin-bottom:0.2rem}
+  .tc-role{font-size:0.78rem;color:var(--accent);font-weight:700;margin-bottom:0.5rem}
+  .tc-d{font-size:0.82rem;color:var(--text-mid);line-height:1.55}
+  .tc-creds{display:flex;gap:0.4rem;margin-top:0.75rem;flex-wrap:wrap;justify-content:center}
+  .tc-creds span{font-size:0.65rem;background:var(--accent-soft);color:var(--accent);padding:0.2rem 0.55rem;border-radius:5px;font-weight:600}
+
+  /* GALLERY */
+  .gal-sec{background:var(--bg-white)}
+  .gg{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:210px 210px;gap:0.75rem}
+  .gi{border-radius:var(--r);overflow:hidden;transition:all 0.4s;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;font-size:0.78rem;color:var(--text-light);font-weight:500}
+  .gi:hover{transform:scale(1.03);box-shadow:var(--shadow)}
+  .gi:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .gi .ico{font-size:2rem}
+  .ga{background:linear-gradient(135deg,#dce8e3,#c8dcd5)}.gb{background:linear-gradient(135deg,#e8e0d6,#d6c8bb)}.gc{background:linear-gradient(135deg,#d6dce8,#c2cee0)}.gd{background:linear-gradient(135deg,#e8d6db,#d6bbc4)}.ge{background:linear-gradient(135deg,#d9e8d6,#c4d6bb)}
+
+  /* BOOKING SYSTEM */
+  .book-sec{background:var(--bg-dark);padding:5rem 2.5rem;position:relative;overflow:hidden}
+  .book-sec::before{content:'';position:absolute;top:-30%;left:-10%;width:50%;height:100%;background:radial-gradient(circle,rgba(13,124,107,0.08),transparent);border-radius:50%}
+  .book-sec .tag{color:var(--gold)}
+  .book-sec .st{color:white}
+  .book-sec .sd{color:rgba(255,255,255,0.6)}
+  .book-container{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1000px;margin:0 auto;position:relative;z-index:1}
+  .book-calendar{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r);padding:1.5rem;backdrop-filter:blur(10px)}
+  .cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
+  .cal-month{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;color:white}
+  .cal-nav{display:flex;gap:0.5rem}
+  .cal-nav button{width:32px;height:32px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:transparent;color:white;cursor:pointer;font-size:0.85rem;transition:all 0.2s}
+  .cal-nav button:hover{background:rgba(255,255,255,0.08)}
+  .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:0.3rem;text-align:center;margin-bottom:0.5rem}
+  .cal-day-name{font-size:0.65rem;color:rgba(255,255,255,0.35);font-weight:600;padding:0.3rem 0;text-transform:uppercase}
+  .cal-day{font-size:0.82rem;color:rgba(255,255,255,0.7);padding:0.55rem 0;border-radius:8px;cursor:pointer;transition:all 0.2s;font-weight:500}
+  .cal-day:hover{background:rgba(255,255,255,0.06);color:white}
+  .cal-day.empty{pointer-events:none}
+  .cal-day.today{background:var(--accent);color:white;font-weight:700}
+  .cal-day.available{color:white;font-weight:600}
+  .cal-day.available:hover{background:var(--accent-glow)}
+  .cal-day.unavailable{color:rgba(255,255,255,0.2);text-decoration:line-through;pointer-events:none}
+
+  .book-form{display:flex;flex-direction:column;gap:0.9rem}
+  .bf-group{display:flex;flex-direction:column;gap:0.3rem}
+  .bf-group label{font-size:0.72rem;color:rgba(255,255,255,0.5);font-weight:600;text-transform:uppercase;letter-spacing:0.3px}
+  .bf-group input,.bf-group select{padding:0.7rem 1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:9px;color:white;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;outline:none;transition:border 0.3s}
+  .bf-group input::placeholder{color:rgba(255,255,255,0.3)}
+  .bf-group input:focus,.bf-group select:focus{border-color:var(--accent)}
+  .bf-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+  .bf-group select option{background:var(--bg-dark);color:white}
+  .bf-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+  .bf-submit{padding:0.85rem;background:var(--accent);color:white;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all 0.3s;margin-top:0.25rem}
+  .bf-submit:hover{background:var(--accent-hover);transform:translateY(-1px)}
+  .bf-note{font-size:0.72rem;color:rgba(255,255,255,0.35);text-align:center;margin-top:0.25rem}
+
+  /* TESTIMONIALS */
+  .tg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+  .tcard{background:var(--bg-white);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:all 0.3s;position:relative}
+  .tcard:hover{box-shadow:var(--shadow)}
+  .tq{position:absolute;top:0.8rem;right:1rem;font-family:'Fraunces',serif;font-size:3.5rem;color:var(--accent-soft);line-height:1;font-weight:800}
+  .ts{color:#F59E0B;font-size:0.8rem;letter-spacing:1px;margin-bottom:0.75rem}
+  .tt{font-size:0.9rem;color:var(--text);line-height:1.7;margin-bottom:1rem;font-style:italic}
+  .ta{display:flex;align-items:center;gap:0.6rem}
+  .tav{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;color:white}
+  .ta1{background:var(--accent)}.ta2{background:var(--gold)}.ta3{background:var(--coral)}
+  .tn{font-weight:700;font-size:0.82rem}
+  .tr{font-size:0.7rem;color:var(--text-light)}
+
+  /* BLOG */
+  .blog-sec{background:var(--bg-white)}
+  .blog-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .blog-card{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--bg);transition:all 0.3s;cursor:pointer}
+  .blog-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .blog-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+  .bt1{background:linear-gradient(135deg,var(--bg-teal),#c8dcd5)}.bt2{background:linear-gradient(135deg,var(--bg-warm),#ebd8cb)}.bt3{background:linear-gradient(135deg,#e8edf5,#d4dbe9)}
+  .blog-body{padding:1.25rem}
+  .blog-tag{font-size:0.65rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.4rem}
+  .blog-card h3{font-family:'Fraunces',serif;font-weight:700;font-size:1rem;margin-bottom:0.4rem;line-height:1.3}
+  .blog-card p{font-size:0.82rem;color:var(--text-mid);line-height:1.55}
+  .blog-meta{display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;font-size:0.72rem;color:var(--text-light)}
+
+  /* LOCATION */
+  .loc-sec{background:var(--bg)}
+  .loc-g{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;align-items:stretch}
+  .loc-map{border-radius:var(--r);overflow:hidden;min-height:380px;background:linear-gradient(135deg,var(--bg-teal),var(--bg-warm));display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+  .loc-info{display:flex;flex-direction:column;gap:1.5rem;justify-content:center}
+  .li{display:flex;gap:1rem;align-items:flex-start}
+  .li-i{width:44px;height:44px;border-radius:11px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+  .li-l{font-size:0.7rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:0.4px}
+  .li-v{font-size:0.95rem;font-weight:500;color:var(--text)}
+  .li-v a{color:var(--accent);text-decoration:none;font-weight:600}
+
+  /* CTA */
+  .cta-sec{background:linear-gradient(135deg,var(--accent),#0A5C4E);text-align:center;padding:5.5rem 2rem;position:relative;overflow:hidden}
+  .cta-sec::before{content:'';position:absolute;top:-40%;right:-15%;width:50%;height:140%;background:radial-gradient(circle,rgba(255,255,255,0.05),transparent);border-radius:50%}
+  .cta-sec .tag{color:rgba(255,255,255,0.5)}
+  .cta-sec .st{color:white;max-width:600px;margin:0 auto 0.5rem}
+  .cta-sec .sd{color:rgba(255,255,255,0.7);max-width:450px;margin:0 auto 2rem}
+  .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .cta-b1{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2.2rem;background:white;color:var(--accent);font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;border:none;border-radius:12px;text-decoration:none;transition:all 0.3s;box-shadow:0 8px 30px rgba(0,0,0,0.15)}
+  .cta-b1:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+  .cta-b2{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2.2rem;background:rgba(255,255,255,0.12);color:white;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:600;border:1px solid rgba(255,255,255,0.2);border-radius:12px;text-decoration:none;transition:all 0.3s}
+  .cta-b2:hover{background:rgba(255,255,255,0.18)}
+
+  footer{background:var(--bg-dark);color:rgba(255,255,255,0.4);padding:2.5rem 2rem;text-align:center;font-size:0.78rem}
+  footer a{color:rgba(255,255,255,0.55);text-decoration:none}
+  .footer-links{display:flex;gap:1.5rem;justify-content:center;margin-bottom:0.75rem}
+
+  .wa-float{position:fixed;bottom:1.25rem;right:1.25rem;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:99;transition:all 0.3s}
+  .wa-float:hover{transform:scale(1.1)}
+
+  .pkg-badge{position:fixed;top:70px;right:1rem;background:linear-gradient(135deg,var(--gold),#B8854E);color:white;font-size:0.7rem;font-weight:700;padding:0.4rem 0.8rem;border-radius:6px;z-index:101;letter-spacing:0.5px;text-transform:uppercase;box-shadow:0 2px 10px rgba(212,165,116,0.3)}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  .anim{opacity:0;transform:translateY(25px);transition:all 0.7s ease}
+  .anim.visible{opacity:1;transform:translateY(0)}
+
+  @media(max-width:768px){
+    .hero{grid-template-columns:1fr;text-align:center;gap:2rem;padding-top:6rem}
+    .hero-p{margin:0 auto 2rem}
+    .hero-btns,.hero-metrics{justify-content:center}
+    .hero-vis{order:-1;max-width:300px;margin:0 auto}
+    .nlinks{display:none}
+    .srv-g,.team-g,.tg,.blog-g{grid-template-columns:1fr}
+    .gg{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+    .gi:nth-child(1){grid-column:span 2}
+    .book-container,.loc-g{grid-template-columns:1fr}
+    .bf-row{grid-template-columns:1fr}
+    .h-float{display:none}
+    .cta-btns{flex-direction:column;align-items:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="pkg-badge">👑 Paquete Premium — S/ 2,000</div>
+
+<nav id="navbar">
+  <a href="#" class="logo"><div class="logo-icon">🦷</div><span class="logo-name">Nova Dental</span></a>
+  <ul class="nlinks">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#instalaciones">Instalaciones</a></li>
+    <li><a href="#citas">Agendar</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#citas" class="ncta">📅 Cita Online</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-pill"><span class="dot"></span> Citas online 24/7 · +10 años</div>
+    <h1>Tu sonrisa en manos de <em>especialistas</em></h1>
+    <p class="hero-p">Centro odontológico con tecnología de última generación. Agenda tu cita online las 24 horas, los 7 días de la semana.</p>
+    <div class="hero-btns">
+      <a href="#citas" class="btn-book">📅 Agendar cita online</a>
+      <a href="https://wa.me/51999888777" class="btn-wa2">💬 WhatsApp</a>
+    </div>
+    <div class="hero-metrics">
+      <div class="hm"><span class="hm-num">10+</span><span class="hm-lbl">Años</span></div>
+      <div class="hm"><span class="hm-num">5,000+</span><span class="hm-lbl">Pacientes</span></div>
+      <div class="hm"><span class="hm-num">4.9★</span><span class="hm-lbl">Google</span></div>
+      <div class="hm"><span class="hm-num">24/7</span><span class="hm-lbl">Citas online</span></div>
+    </div>
+  </div>
+  <div class="hero-vis">
+    <div class="hero-main-img"><div class="ph"><span class="big">😁</span>Foto profesional del<br>equipo o consultorio</div></div>
+    <div class="h-float f1"><div class="hf-l">Evaluación</div><div class="hf-v">Gratuita</div></div>
+    <div class="h-float f2"><div class="hf-l">Satisfacción</div><div class="hf-v">98.5%</div></div>
+    <div class="h-float f3"><div class="hf-l">Próx. disponible</div><div class="hf-v2">Hoy 3pm</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="srv-sec" id="servicios">
+  <div class="ctn anim">
+    <span class="tag">Nuestros Servicios</span>
+    <h2 class="st">Tratamientos especializados</h2>
+    <p class="sd">Cada procedimiento con materiales premium y tecnología de vanguardia.</p>
+    <div class="srv-g">
+      <div class="sc"><div class="sc-i">🪥</div><h3>Limpieza Dental</h3><p>Profilaxis con ultrasonido y pulido profesional para una limpieza profunda.</p><span class="price-tag">Desde S/ 80</span></div>
+      <div class="sc"><div class="sc-i">✨</div><h3>Blanqueamiento LED</h3><p>Recupera hasta 8 tonos en una sola sesión con nuestro sistema LED profesional.</p><span class="price-tag">Desde S/ 350</span></div>
+      <div class="sc"><div class="sc-i">🔧</div><h3>Ortodoncia</h3><p>Brackets metálicos, cerámicos e invisibles. Plan personalizado con seguimiento.</p><span class="price-tag">Desde S/ 2,500</span></div>
+      <div class="sc"><div class="sc-i">🦷</div><h3>Implantes Dentales</h3><p>Implantes de titanio grado 5 con corona de porcelana. Garantía de por vida.</p><span class="price-tag">Desde S/ 2,800</span></div>
+      <div class="sc"><div class="sc-i">👶</div><h3>Odontopediatría</h3><p>Ambiente lúdico diseñado para que los niños disfruten su visita.</p><span class="price-tag">Desde S/ 60</span></div>
+      <div class="sc"><div class="sc-i">🏥</div><h3>Endodoncia</h3><p>Tratamiento de conductos con tecnología rotatoria. Rápido e indoloro.</p><span class="price-tag">Desde S/ 300</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="equipo">
+  <div class="ctn anim">
+    <span class="tag">Nuestro Equipo</span>
+    <h2 class="st">Especialistas de confianza</h2>
+    <p class="sd">Un equipo multidisciplinario con formación de primer nivel.</p>
+    <div class="team-g">
+      <div class="tc"><div class="tc-ph tp1">👨‍⚕️</div><h3>Dr. Carlos Mendoza</h3><div class="tc-role">Director — Implantología</div><p class="tc-d">+10 años. Especialista en implantes y rehabilitación oral.</p><div class="tc-creds"><span>🎓 UNMSM</span><span>COP 12345</span></div></div>
+      <div class="tc"><div class="tc-ph tp2">👩‍⚕️</div><h3>Dra. Ana Vargas</h3><div class="tc-role">Ortodoncia</div><p class="tc-d">Certificada en Invisalign. Especialista en ortopedia maxilar.</p><div class="tc-creds"><span>🎓 UPCH</span><span>COP 54321</span></div></div>
+      <div class="tc"><div class="tc-ph tp3">👨‍⚕️</div><h3>Dr. Luis Torres</h3><div class="tc-role">Odontopediatría</div><p class="tc-d">Los niños lo aman. Trato cálido y experiencia con los más pequeños.</p><div class="tc-creds"><span>🎓 USMP</span><span>COP 67890</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gal-sec" id="instalaciones">
+  <div class="ctn anim">
+    <span class="tag">Instalaciones</span>
+    <h2 class="st">Tecnología y confort</h2>
+    <p class="sd">Espacios modernos con equipamiento de última generación.</p>
+    <div class="gg">
+      <div class="gi ga"><span class="ico">🏥</span>Recepción</div>
+      <div class="gi gb"><span class="ico">🪑</span>Consultorio</div>
+      <div class="gi gc"><span class="ico">📸</span>Rayos X Digital</div>
+      <div class="gi gd"><span class="ico">😊</span>Sala de espera</div>
+      <div class="gi ge"><span class="ico">🧼</span>Esterilización</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING SYSTEM -->
+<section class="book-sec" id="citas">
+  <div class="ctn anim">
+    <span class="tag">Sistema de Citas Online</span>
+    <h2 class="st">Agenda tu cita ahora</h2>
+    <p class="sd">Selecciona fecha, horario y servicio. Confirmación inmediata por WhatsApp y email.</p>
+    <div class="book-container">
+      <div class="book-calendar">
+        <div class="cal-header">
+          <span class="cal-month">Marzo 2026</span>
+          <div class="cal-nav"><button>‹</button><button>›</button></div>
+        </div>
+        <div class="cal-days">
+          <span class="cal-day-name">Lun</span><span class="cal-day-name">Mar</span><span class="cal-day-name">Mie</span><span class="cal-day-name">Jue</span><span class="cal-day-name">Vie</span><span class="cal-day-name">Sáb</span><span class="cal-day-name">Dom</span>
+          <span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day unavailable">1</span>
+          <span class="cal-day unavailable">2</span><span class="cal-day unavailable">3</span><span class="cal-day unavailable">4</span><span class="cal-day unavailable">5</span><span class="cal-day unavailable">6</span><span class="cal-day unavailable">7</span><span class="cal-day unavailable">8</span>
+          <span class="cal-day unavailable">9</span><span class="cal-day unavailable">10</span><span class="cal-day unavailable">11</span><span class="cal-day unavailable">12</span><span class="cal-day unavailable">13</span><span class="cal-day unavailable">14</span><span class="cal-day unavailable">15</span>
+          <span class="cal-day unavailable">16</span><span class="cal-day unavailable">17</span><span class="cal-day unavailable">18</span><span class="cal-day unavailable">19</span><span class="cal-day unavailable">20</span><span class="cal-day unavailable">21</span><span class="cal-day unavailable">22</span>
+          <span class="cal-day unavailable">23</span><span class="cal-day unavailable">24</span><span class="cal-day today">25</span><span class="cal-day available">26</span><span class="cal-day available">27</span><span class="cal-day available">28</span><span class="cal-day unavailable">29</span>
+          <span class="cal-day available">30</span><span class="cal-day available">31</span>
+        </div>
+      </div>
+      <div class="book-form">
+        <div class="bf-row">
+          <div class="bf-group"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+          <div class="bf-group"><label>Apellido</label><input type="text" placeholder="Tu apellido"></div>
+        </div>
+        <div class="bf-row">
+          <div class="bf-group"><label>Teléfono</label><input type="tel" placeholder="999 888 777"></div>
+          <div class="bf-group"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
+        </div>
+        <div class="bf-group"><label>Servicio</label>
+          <select><option>Selecciona un servicio</option><option>Limpieza dental — S/ 80</option><option>Blanqueamiento LED — S/ 350</option><option>Ortodoncia — Consulta</option><option>Implantes — Consulta</option><option>Odontopediatría — S/ 60</option><option>Endodoncia — S/ 300</option><option>Evaluación general (gratis)</option></select>
+        </div>
+        <div class="bf-row">
+          <div class="bf-group"><label>Fecha</label><input type="text" placeholder="26/03/2026"></div>
+          <div class="bf-group"><label>Hora preferida</label>
+            <select><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option></select>
+          </div>
+        </div>
+        <button class="bf-submit">Confirmar cita →</button>
+        <p class="bf-note">Recibirás confirmación por WhatsApp y email en menos de 1 hora</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="ctn anim">
+    <span class="tag">Testimonios</span>
+    <h2 class="st">Lo que dicen nuestros pacientes</h2>
+    <p class="sd">Miles de sonrisas transformadas avalan nuestro trabajo.</p>
+    <div class="tg">
+      <div class="tcard"><div class="tq">"</div><div class="ts">★★★★★</div><p class="tt">"Excelente atención. El Dr. Mendoza me explicó todo con paciencia. Mi blanqueamiento quedó increíble."</p><div class="ta"><div class="tav ta1">MR</div><div><div class="tn">María Rodriguez</div><div class="tr">Blanqueamiento</div></div></div></div>
+      <div class="tcard"><div class="tq">"</div><div class="ts">★★★★★</div><p class="tt">"Agendar online fue facilísimo. Mis hijos ya no le temen al dentista gracias al Dr. Torres."</p><div class="ta"><div class="tav ta2">JP</div><div><div class="tn">José Paredes</div><div class="tr">Odontopediatría</div></div></div></div>
+      <div class="tcard"><div class="tq">"</div><div class="ts">★★★★★</div><p class="tt">"Mi implante se ve completamente natural. El sistema de citas online es muy conveniente."</p><div class="ta"><div class="tav ta3">LC</div><div><div class="tn">Laura Castillo</div><div class="tr">Implante dental</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-sec" id="blog">
+  <div class="ctn anim">
+    <span class="tag">Blog de Salud Dental</span>
+    <h2 class="st">Tips para tu sonrisa</h2>
+    <p class="sd">Artículos escritos por nuestro equipo para ayudarte a cuidar tu salud bucal.</p>
+    <div class="blog-g">
+      <div class="blog-card">
+        <div class="blog-thumb bt1">🪥</div>
+        <div class="blog-body">
+          <div class="blog-tag">Prevención</div>
+          <h3>5 errores comunes al cepillarte los dientes</h3>
+          <p>¿Sabías que la mayoría de personas no se cepilla correctamente? Descubre los errores más frecuentes.</p>
+          <div class="blog-meta"><span>📅 15 Mar 2026</span><span>·</span><span>3 min lectura</span></div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb bt2">🦷</div>
+        <div class="blog-body">
+          <div class="blog-tag">Implantes</div>
+          <h3>¿Cuándo necesitas un implante dental?</h3>
+          <p>Todo lo que debes saber sobre implantes: cuándo son necesarios, el proceso y la recuperación.</p>
+          <div class="blog-meta"><span>📅 8 Mar 2026</span><span>·</span><span>5 min lectura</span></div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb bt3">👶</div>
+        <div class="blog-body">
+          <div class="blog-tag">Niños</div>
+          <h3>Primera visita al dentista: guía para padres</h3>
+          <p>Cómo preparar a tu hijo para su primera consulta dental y hacer que sea una experiencia positiva.</p>
+          <div class="blog-meta"><span>📅 1 Mar 2026</span><span>·</span><span>4 min lectura</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="loc-sec" id="ubicacion">
+  <div class="ctn anim">
+    <span class="tag">Encuéntranos</span>
+    <h2 class="st">Ubicación y horarios</h2>
+    <p class="sd">Zona céntrica con estacionamiento disponible.</p>
+    <div class="loc-g">
+      <div class="loc-map"><div class="ph"><span class="big">🗺️</span>Google Maps embebido</div></div>
+      <div class="loc-info">
+        <div class="li"><div class="li-i">📍</div><div><div class="li-l">Dirección</div><div class="li-v">Av. La Marina 2500, San Miguel, Lima</div></div></div>
+        <div class="li"><div class="li-i">🕐</div><div><div class="li-l">Horario</div><div class="li-v">Lun-Vie: 9am–7pm · Sáb: 9am–2pm</div></div></div>
+        <div class="li"><div class="li-i">📞</div><div><div class="li-l">Teléfono</div><div class="li-v">(01) 555-1234</div></div></div>
+        <div class="li"><div class="li-i">💬</div><div><div class="li-l">WhatsApp</div><div class="li-v"><a href="https://wa.me/51999888777">Escríbenos →</a></div></div></div>
+        <div class="li"><div class="li-i">📧</div><div><div class="li-l">Email</div><div class="li-v"><a href="mailto:citas@novadental.pe">citas@novadental.pe</a></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <span class="tag">¿Listo para empezar?</span>
+  <h2 class="st">Transforma tu sonrisa hoy</h2>
+  <p class="sd">Primera evaluación gratuita. Agenda online en 30 segundos.</p>
+  <div class="cta-btns">
+    <a href="#citas" class="cta-b1">📅 Agendar cita online</a>
+    <a href="https://wa.me/51999888777" class="cta-b2">💬 Escribir por WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="#servicios">Servicios</a><a href="#equipo">Equipo</a><a href="#citas">Citas</a><a href="#blog">Blog</a><a href="#ubicacion">Ubicación</a>
+  </div>
+  <p>© 2026 Nova Dental — Centro Odontológico · Diseñado por <a href="#">Diego Carbajal</a></p>
+</footer>
+
+<a href="https://wa.me/51999888777" class="wa-float">💬</a>
+
+<script>
+  window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+  const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.1});
+  document.querySelectorAll('.anim').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
